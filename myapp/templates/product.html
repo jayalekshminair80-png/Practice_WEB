@@ -1,0 +1,56 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/product.css' %}">
+</head>
+
+<body>
+    <div class="container">
+    <h1>PRODUCT ADDING PAGE</h1>
+        <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+            <label for="image">PRODUCT IMAGE</label>
+            <input type="file" id="image" name="image">
+
+            <br>
+
+            <label for="name">PRODUCT NAME</label>
+            <input type="text" id="name" name="product_name">
+
+            <br>
+
+            <label for="price">PRODUCT PRICE</label>
+            <input type="number" id="price" name="price">
+
+            <br>
+
+            <label for="quantity">PRODUCT QUANTITY</label>
+            <input type="number" id="quantity" name="quantity">
+
+            <br>
+
+            <label for="des">PRODUCT DESCRIPTION</label>
+            <input type="text" id="des" name="product_des">
+
+            <br>
+
+            <button type="submit">SUBMIT</button>
+            <br>
+
+            <a href="{% url 'home' %}">Go To Home page</a>
+
+
+
+        </form>
+
+    
+    </div>
+    
+</body>
+</html>

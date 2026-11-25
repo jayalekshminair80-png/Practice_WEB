@@ -1,0 +1,17 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+</head>
+<body>
+    <h1>WELCOME TO PROFILE</h1>
+    <h1>{{ request.session.username }}</h1>
+    <h2>{{ request.session.fullname }}</h2>
+    <h3>{{ request.session.email }}</h3>
+    <h3>{{ request.session.user_id }}</h3>
+</body>
+</html>

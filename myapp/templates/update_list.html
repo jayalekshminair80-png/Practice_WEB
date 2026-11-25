@@ -1,0 +1,99 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+</head>
+<body>
+    <div class="container">
+        
+        <form  method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h1>Registration Page</h1>
+       
+
+        <label for="">Profile Image</label>
+        <input type="file" name="profile"> <br>
+        {% for error in form.profile.errors %}
+            <p class="error-message">{{ error }}</p>
+        {% endfor %}
+
+        <label for="">Full Name</label>
+        <!-- <input type="text" placeholder="Enter your full name" name="full_name" value="{{ data.full_name }}"> -->
+         {{ data.full_name }}
+        {% for error in form.full_name.errors %}
+            <p class="error-message">{{ error }}</p>
+        {% endfor %}
+        <br>
+
+        <label for="">User Name</label>
+        <!-- <input type="text" placeholder="username" name="user_name" value="{{ data.user_name }}"> -->
+         {{ data.user_name }}
+        {% for error in form.user_name.errors %}
+            <p class="error-message">{{ error }}</p>
+        {% endfor %}
+        <br>
+
+        <label for="">Password</label>
+        <!-- <input type="password" name="password" value="{{ data.password }}"> -->
+        {{ data.password }}
+         {% for error in form.password.errors %}
+            <p class="error-message">{{ error }}</p>
+        {% endfor %}
+        
+
+        <br>
+
+        <label for="">Confirm password</label>
+        <input type="password" name="confirm_password">
+        {% for error in form.confirm_password.errors %}
+            <p class="error-message">{{ error }}</p>
+        {% endfor %}
+
+
+
+        <label for="">Phone Number</label>
+        <!-- <input type="number" name="number" value="{{ data.number }}"> -->
+        {{ data.number }}
+        {% for error in form.number.errors %}
+            <p class="error-message">{{ error }}</p>
+        {% endfor %}
+        <br>
+
+        <label for="">Gender</label>
+        <input type="radio" name="gender" value="Male" {% if data.gender == 'Male' %}  checked {% endif %}>Male
+        <input type="radio" name="gender" value="Female" {% if data.gender == 'Female' %}  checked {% endif %}>Female
+        
+        <br>
+
+        <label for="">DOB</label>
+        <!-- <input type="date" name="dob" value="{{ data.dob|date:'Y-m-d' }}"> -->
+        {{ data.dob|date:'Y-m-d' }}
+        {% for error in form.dob.errors %}
+            <p class="error-message">{{ error }}</p>
+        {% endfor %}
+        <br>
+
+        <label for="">Email</label>
+        <!-- <input type="email" name="email" value="{{ data.email }}"> -->
+        {{ data.email }}
+       {% for error in form.email.errors %}
+            <p class="error-message">{{ error }}</p>
+        {% endfor %}
+
+        
+
+        <br>
+        
+        <button type="submit">Register</button>
+
+       </form>
+
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,106 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title> 
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+</head>
+
+<body>
+    <h1>WELCOME TO DASHBOARD</h1>
+    <h1>{{ request.session.username }}</h1>
+    <h2>{{ request.session.fullname }}</h2>
+    <h3>{{ request.session.email }}</h3>
+
+    <h3>{{ request.COOKIES.username }}</h3>
+    <h3>{{ request.COOKIES.fullname }}</h3>
+
+    <!-- {% if data %}
+
+        {% for i in data %}
+            <h1>{{ i }}</h1>
+        {% endfor %}
+
+    {% endif %} -->
+
+    <a href="{% url 'profile' %}" style="color: rgb(13, 185, 30);">PROFILE</a>
+    
+    <table>
+       <tr>
+        <th>Profile Image</th>
+        <th>Full Name</th>
+        <th>Username</th>
+        <th>Phone Number</th>
+        <th>Gender</th>
+        <th>DOB</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>Password</th>
+        <th>Update</th>
+        <th>Delete</th>
+
+       </tr>  
+   
+
+    {% if mydata %}
+        {% for i in mydata %}
+    <tr>
+        <td><img style="width: 50px; height:80px;"  src="{{ i.profile.url }}" alt="image"></td>
+        <td>{{ i.full_name }}</td>
+        <td>{{ i.user_name }}</td>
+        <td>{{ i.number }}</td>
+        <td>{{ i.gender }}</td>
+        <td>{{ i.dob }}</td>
+        <td>{{ i.email }}</td>
+        <td>{{ i.address }}</td>
+        <td>{{ i.password }}</td>
+        <td><a href="{% url 'update' i.id %}">Update</a></td>
+        <td><a href="{% url 'delete' i.id %}">Delete</a></td>
+    </tr>
+
+
+
+    {% endfor %}
+    {% endif %}
+
+
+
+    </table>
+
+    <br><br><br><br>
+
+    <table>
+        <th>fullname</th>
+        <th>username</th>
+        <th>phonenumber</th>
+        <th>gender</th>
+        <th>dob</th>
+        <th>email</th>
+        <th>update</th>
+        <th>delete</th>
+
+
+
+    {% if form %}
+        {% for i in form %}
+            <tr>
+                <td>{{ i.full_name }}</td>
+                <td>{{ i.user_name }}</td>
+                <td>{{ i.number }}</td>
+                <td>{{ i.gender }}</td>
+                <td>{{ i.dob }}</td>
+                <td>{{ i.email }}</td>
+                <td><a href="{% url 'update_list' i.id %}">Update</a></td>
+                <td><a href="{% url 'delete_list' i.id %}">delete</a></td>
+            </tr>
+        {% endfor %}
+    {% endif %}
+
+    </table>
+
+
+    </body>
+</html>

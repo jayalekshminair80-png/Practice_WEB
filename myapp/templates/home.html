@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .spi1{
+        width:50%;
+    }
+</style>
+<body>
+    <h1>WELCOME PAGE</h1>
+    <a href="{% url 'about' %}">Go to about page</a>
+    <br>
+    <a href="{% url 'product' %}">Go To Product page</a>
+    <br>
+    <a href="{% url 'register' %}">Go To register page</a>
+    <br>
+    <a href="{% url 'dashboard' %}">Go To Dashboard</a>
+    <br>
+    
+
+   
+    <img class="spi1"  src="{% static 'img/spi1.jpg' %}" alt="">
+
+</body>
+</html>
+{% endblock %}
